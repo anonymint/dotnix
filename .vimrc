@@ -83,9 +83,21 @@ function! StripWhitespace()
 	call setpos('.', save_cursor)
 	call setreg('/', old_query)
 endfunction
+
+" Toggle Relative or Absolute line function
+function! LineNumberToggle()
+	if (&rnu == 1)
+		set nornu
+	else
+		set rnu
+	endif
+endfunc
+
 noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" Toggle mapkey CTRL-N
+nnoremap <C-l> : call LineNumberToggle()<CR> 
 
 " Automatic commands
 if has("autocmd")
