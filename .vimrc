@@ -86,10 +86,12 @@ endfunction
 
 " Toggle Relative or Absolute line function
 function! LineNumberToggle()
-	if (&rnu == 1)
-		set nornu
-	else
-		set rnu
+	if v:version >= 703
+		if (&rnu == 1)
+			set nornu
+		else
+			set rnu
+		endif
 	endif
 endfunc
 
